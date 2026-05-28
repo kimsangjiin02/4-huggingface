@@ -747,13 +747,14 @@ display(df_raw[["제목", "본문"]].applymap(lambda x: str(x)[:80] + "..." if l
 # In[ ]:
 
 
-get_ipython().system('pip install -q "transformers==4.40.0" "tokenizers<0.21"')
+get_ipython().system('pip install -q "transformers>=4.41.0" "tokenizers<0.21"')
 
 
 # In[ ]:
 
 
 # 요약 파이프라인 로드
+from transformers import pipeline
 print("요약 모델 로드 중... (첫 실행 시 시간이 걸릴 수 있습니다)")
 summarizer = pipeline(
     task="summarization",
@@ -799,6 +800,7 @@ for i in range(3):
 # In[ ]:
 
 
+from transformers import pipeline
 # 번역 파이프라인 로드
 print("번역 모델 로드 중... (모델이 커서 시간이 걸립니다)")
 translator = pipeline(
